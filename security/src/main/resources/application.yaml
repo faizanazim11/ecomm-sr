@@ -1,0 +1,17 @@
+
+spring:
+    application:
+        name: ${APP_NAME:EComm-Security}
+
+server:
+    port: ${PORT:5208}
+    servlet:
+        context-path: ${CONTEXT_PATH:/}
+
+logging:
+    file:
+        path: ${LOG_PATH:logs}
+    level:
+        file: ${LOG_LEVEL_FILE:DEBUG}
+        console: ${LOG_LEVEL_CONSOLE:INFO}
+        root: ${LOG_LEVEL_ROOT:INFO}
