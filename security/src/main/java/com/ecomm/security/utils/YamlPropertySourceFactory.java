@@ -12,6 +12,19 @@ import org.springframework.lang.Nullable;
 
 public class YamlPropertySourceFactory implements PropertySourceFactory {
 
+    
+    /**
+     * The createPropertySource function is used to create a PropertySource object from the given resource.
+     * The name of the property source will be set to the filename of the resource, and its properties will be
+     * loaded from that file. If no properties are found in that file, then null is returned instead.
+     
+     *
+     * @param @Nullable String name Specify the name of the property source
+     * @param EncodedResource encodedResource Get the resource
+     *
+     * @return A propertysource object
+     *
+     */
     @Override
     public PropertySource<?> createPropertySource(@Nullable String name, EncodedResource encodedResource)
             throws IOException {

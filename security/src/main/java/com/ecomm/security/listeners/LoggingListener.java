@@ -9,11 +9,34 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 public class LoggingListener implements ApplicationListener<ApplicationEvent>, Ordered{
 
+    
+    /**
+     * The getOrder function is used to determine the order in which listeners are called.
+     * The default value of 0 means that it will be called after all other listeners, but before any post-processing.
+     
+     *
+     *
+     * @return The order of the listener
+     *
+     */
     @Override
     public int getOrder() {
         return LoggingApplicationListener.DEFAULT_ORDER - 1;
     }
 
+    
+    /**
+     * The onApplicationEvent function is called by the Spring Boot framework when an ApplicationEvent occurs.
+     * In this case, we are only interested in the ApplicationEnvironmentPreparedEvent event which occurs after
+     * all of the properties have been loaded from application.properties and other property files.  We then use those
+     * properties to set our logging system's log path, app name, console log level, file log level and root logger level.
+     
+     *
+     * @param ApplicationEvent event Get the environment properties
+     *
+     * @return void
+     *
+     */
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
         if (event instanceof ApplicationEnvironmentPreparedEvent)

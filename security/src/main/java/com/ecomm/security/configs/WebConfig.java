@@ -19,19 +19,38 @@ public class WebConfig implements WebMvcConfigurer{
 
     @Value("#{'${cors.allowed-origins}'.split(',')}")
     private String[] corsAllowedOrigins;
+
     @Value("#{'${cors.allowed-methods}'.split(',')}")
     private String[] corsAllowedMethods;
+    
     @Value("#{'${cors.allowed-headers}'.split(',')}")
     private String[] corsAllowedHeaders;
+    
     @Value("#{'${cors.exposed-headers}'.split(',')}")
     private String[] corsExposedHeaders;
+    
     @Value("${cors.allow-credentials}")
     private boolean corsAllowCredentials;
+    
     @Value("${cors.max-age}")
     private long corsMaxAge;
+    
     @Value("${cors.path}")
     private String corsPath;
     
+    
+    /**
+     * The addCorsMappings function is used to configure the CORS policy for this application.
+     * The function takes a CorsRegistry object as an argument, which allows us to add mappings to the registry.
+     * In our case, we call the addMapping() method on it and pass in a path that should be covered by our CORS policy.
+     * We also set allowedOrigins(), allowedMethods(), allowedHeaders(), exposedHeaders(), allowCredentials() and maxAge().&lt;/p&gt;
+     
+     *
+     * @param CorsRegistry registry Register the cors configuration with spring mvc
+     *
+     * @return void
+     *
+     */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         log.debug("Allowed Origins: " + corsAllowedOrigins);
